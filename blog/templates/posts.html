@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home page
+{% endblock %}
+
+
+{% block contant %}
+    <h2>Posts</h2>
+    {% for post in posts %}
+{#        <a href="/posts/{{  post.id }}"><p>{{ post.title }}</p></a>#}
+        <a href="/{{  post.get_post_details }}"><p>{{ post.title }}</p></a>
+        <p>{{ post.content }}</p>
+{#        <a href="/posts/{{  post.id }}/delete"><span class="btn btn-danger">Delete</span></a>#}
+        <a href="/{{  post.get_post_delete }}"><span class="btn btn-danger">Delete</span></a>
+        <hr>
+    {% endfor %}
+
+
+
+{% endblock %}

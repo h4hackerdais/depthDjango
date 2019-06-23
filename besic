@@ -1,0 +1,108 @@
+python3 manage.py runserver
+python3 manage.py migrate
+python3 manage.py createsuperuser
+
+return html
+from django.http import HttpResponse
+return HttpResponse("<h2>Working2</h2>")
+
+return html file
+from django.shortcuts import render
+return render(request,"index.html")
+
+
+# single function import
+# from .views import home_page
+
+
+# multiple function import
+from .views import(home_page,about_page)
+
+
+
+python3 manage.py shell
+# import file settings.py in shell
+command: from django.conf import settings
+# settings file name after that called variable with dot operator
+command: settings.BASE_DIR
+result: '/root/PycharmProjects/depthDjango'
+
+
+
+# get path of templates
+command: import os
+command: from django.conf import settings
+# store path in variable
+command: BASE_DIR = settings.BASE_DIR
+command: os.path.join(BASE_DIR, 'templates')
+result: '/root/PycharmProjects/depthDjango/templates'
+
+
+# string interpolation
+command: python3
+# one way
+command: abc = "this is {0}".format("awesome")
+command: abc
+result: This is awesome
+
+# second way
+command: abc = "this is {name}".format(name="awesome")
+command: abc
+result: This is awesome
+
+
+# besic template
+base.html
+<title>{% block title %} {% endblock %}</title>
+<div class="container"> {% block contant %} {% endblock %} </div>
+
+index.html
+{% extends "base.html" %}
+{% block title %}  Home page {% endblock %}
+{% block contant %} <h2>This is home</h2> {% endblock %}
+
+
+# cli
+python3 manage.py startapp blog
+add blog folder name in settings.py inside this array INSTALLED_APPS[]
+create models after that migrate
+command: python3 manage.py makemigrations
+command: python3 manage.py migrate
+
+
+# blog folder inside create new templates folder add here all html file related blog
+# blog folder inside create new file urls.py add all url blog related
+# urls.py file include inside main root urls.py
+   from django.urls import path, include // import include method
+   path('posts',include('blog.urls')),
+
+
+
+
+# insert and read data by terminal
+# python manage.py shell
+# insert data
+# manage.py is root folder and also blog is root folder
+#  models file inside blog folder inside models file have BlogPost class
+# from blog.models import BlogPost
+# obj = BlogPost()
+# title="this is my title"
+# obj.content="This is my content"
+# obj.save()
+
+# read data
+# from blog.models import BlogPost
+# obj = BlogPost.objects.first()
+# obj.title
+# obj.content
+
+
+
+# insert data with admin panel
+# connect models with admin open admin.py file add models.py register in admin.py
+# now you can insert data
+from .models import BlogPost
+admin.site.register(BlogPost)
+
+
+
